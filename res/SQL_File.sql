@@ -1,0 +1,7 @@
+use Segment;
+CREATE TABLE dna (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  segment VARCHAR(400) NOT NULL
+);
+
+SELECT * FROM dna

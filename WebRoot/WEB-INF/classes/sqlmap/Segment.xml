@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace命名空间,作用就是对sql进行分类化的管理,理解为sql隔离
+    注意:使用mapper代理开发时，namespace有特殊作用要设置为dao的地址
+ -->
+<mapper namespace="com.mybatis.dao.SegmentDao">
+<!-- 在映射文件中配置很多sql语句 -->
+<!-- 添加用户 
+parameterType:指定输入的参数类型是pojo(包括用户信息);
+#{}中指定pojo的属性名称，接收到pojo对象的属性值    ,mybatis通过OGNL(类似struts2的OGNL)获取对象的属性值
+-->
+<insert id="insertSeg" parameterType="com.mybatis.entity.Segment" >
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+        select last_insert_id()
+    </selectKey>
+    insert into dna (segment) values(#{seg})
+</insert>
+
+</mapper>
